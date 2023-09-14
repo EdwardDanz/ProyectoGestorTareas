@@ -1,0 +1,17 @@
+# Ignorar archivos de configuración específicos del entorno
+config.php
+
+# Ignorar directorios de caché
+cache/
+
+# Ignorar archivos log
+*.log
+
+# Ignorar la carpeta vendor (si usas composer)
+vendor/
+
+# Ignorar archivos y carpetas específicos del sistema
+.DS_Store
+Thumbs.db
+
+# Otros patrones específicos del proyecto...
