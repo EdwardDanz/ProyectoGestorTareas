@@ -1,0 +1,136 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #b7adb9; /* color pastel */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+form {
+    background-color: #FFEBEE; /* color pastel */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    box-sizing: border-box;
+}
+
+input[type="text"], input[type="password"], button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #FFCDD2; /* color pastel */
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #FFA4A9; /* tono más oscuro */
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.btn-register {
+    background-color: #FFB6C1; /* Color pastel */
+    border: none;
+    border-radius: 20px;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.btn-register:hover {
+    transform: scale(1.05); /* Agrandamos un poco el botón al pasar el cursor */
+}
+
+/* Estilos generales para los campos de entrada */
+input[type="text"], 
+input[type="password"], 
+input[type="email"] {
+    width: 100%; /* Ocupar todo el ancho disponible */
+    padding: 12px 20px; /* Espaciado interno */
+    margin: 8px 0; /* Margen alrededor del campo de entrada */
+    box-sizing: border-box; /* Asegurar que el padding no añade al ancho total */
+    border: 1px solid #ccc; /* Borde del campo de entrada */
+    border-radius: 12px; /* Bordes más redondeados */
+}
+
+/* Estilos para los botones */
+button {
+    background-color: #f2f2f2; /* Color de fondo */
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    border-radius: 12px; /* Bordes más redondeados */
+}
+
+/* Cambia el color de fondo cuando el usuario pasa el cursor por encima */
+button:hover {
+    background-color: #e0e0e0;
+}
+
+/* Estilo específico para el botón de registrar */
+.btn-register {
+    background-color: #ffc0cb; /* Color pastel de fondo */
+    color: white; /* Color del texto */
+}
+
+.btn-register:hover {
+    background-color: #ffadb5; /* Color pastel más oscuro al pasar el cursor */
+}
+
+/* PARA ANIMAR EL TÍTULO*/
+
+#animatedTitle span {
+    display: inline-block;
+    transform-origin: bottom;
+    transition: transform 0.5s;
+}
+
+#animatedTitle {
+    transform: scale(2.3);
+    font-family: 'Pacifico', cursive;
+    font-size: 2em;
+    margin-right: 200px;
+}
+
+/* PARA MODIFICAR EL TÍTULO*/
+.content-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+}
+
+header {
+    flex: 1;
+    text-align: left;
+    padding-right: 50px; /* Espacio entre el título y el formulario */
+}
+
+.form-wrapper {
+    flex: 2;
+    padding-left: 50px; /* Espacio entre el título y el formulario */
+}
+
+
+
