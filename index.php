@@ -6,6 +6,18 @@ require_once 'config/database.php';
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
+
+// echo "Valor de just_logged_out: ";
+// var_dump(isset($_SESSION['just_logged_out']) ? $_SESSION['just_logged_out'] : 'No definido');
+// die();
+
+if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
+    header("Location: dashboard.php");
+    exit;
+}
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -22,17 +34,25 @@ if (session_status() == PHP_SESSION_NONE) {
     <link rel="stylesheet" href="assets/css/estilos.css">
 </head>
 
-<body>
+<body <?php if (isset($_SESSION['just_logged_out']) && $_SESSION['just_logged_out']) { echo 'class="fade-in"'; unset($_SESSION['just_logged_out']); } ?>>
     <!-- Aquí va tu estructura principal del sitio -->
     <main>
         <div class="content-wrapper">
             <header>
-                <h1 id="animatedTitle">Gestor de Tareas</h1>
+                <h1 id="animatedTitle">GestorLabors</h1>
             </header>
             <?php if (!isset($_SESSION['usuario_id'])) : ?>
                 <!-- Contenedor para el formulario de inicio de sesión -->
                 <div id="loginForm">
-                    <form action="user/login_logic.php" method="post">
+
+                    <?php
+                    if (isset($_SESSION['login_error']) && $_SESSION['login_error']) {
+                        echo "<p style='color:red;'>Correo electrónico o contraseña incorrectos</p>";
+                        unset($_SESSION['login_error']); // Limpia el error para futuras visitas
+                    }
+                    ?>
+
+                    <form action="user/login.php" method="post">
                         <input type="email" name="email" placeholder="Correo electrónico" required>
                         <input type="password" name="password" placeholder="Contraseña" required>
                         <button type="submit">Iniciar sesión</button>
@@ -40,9 +60,10 @@ if (session_status() == PHP_SESSION_NONE) {
                     <button class="btn-register">Crear nuevo usuario</button>
                 </div>
 
+
                 <!-- Aquí es donde irá el formulario de registro, que estará oculto por defecto -->
                 <div id="registerForm" style="display: none;">
-                    <form action="user/register_logic.php" method="post">
+                    <form action="user/register.php" method="post">
                         <input type="text" name="nombre" placeholder="Nombre" required>
                         <input type="text" name="apellido" placeholder="Apellido" required>
                         <input type="email" name="email" placeholder="Correo electrónico" required>
@@ -56,6 +77,11 @@ if (session_status() == PHP_SESSION_NONE) {
 
             <?php else : ?>
                 <!-- Muestra contenido para usuarios logueados, como la lista de tareas -->
+                <!-- <p>Bienvenido, has iniciado sesión correctamente.</p>
+                <form action="user/logout.php" method="post">
+                    <button type="submit">Cerrar sesión</button>
+                </form> -->
+
 
             <?php endif; ?>
         </div>

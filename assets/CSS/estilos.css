@@ -1,15 +1,23 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #b7adb9; /* color pastel */
+    /* background-color: #b7adb9;  */
+    /* color pastel */
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100vh;
     margin: 0;
+
+    /* Aquí aplicamos imagen a la pantalla de inicio de sesión */
+    background-image: url('paisaje.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 
 form {
-    background-color: #FFEBEE; /* color pastel */
+    background-color: #FFEBEE;
+    /* color pastel */
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
@@ -17,7 +25,9 @@ form {
     box-sizing: border-box;
 }
 
-input[type="text"], input[type="password"], button {
+input[type="text"],
+input[type="password"],
+button {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
@@ -26,13 +36,15 @@ input[type="text"], input[type="password"], button {
     box-sizing: border-box;
 }
 
-button {
-    background-color: #FFCDD2; /* color pastel */
-    cursor: pointer;
-}
+/* button {
+    background-color: #FFCDD2; */
+    /* color pastel */
+    /* cursor: pointer;
+} */
 
 button:hover {
-    background-color: #FFA4A9; /* tono más oscuro */
+    background-color: #FFA4A9;
+    /* tono más oscuro */
 }
 
 a {
@@ -44,7 +56,8 @@ a {
 }
 
 .btn-register {
-    background-color: #FFB6C1; /* Color pastel */
+    background-color: #FFB6C1;
+    /* Color pastel */
     border: none;
     border-radius: 20px;
     color: white;
@@ -59,28 +72,37 @@ a {
 }
 
 .btn-register:hover {
-    transform: scale(1.05); /* Agrandamos un poco el botón al pasar el cursor */
+    transform: scale(1.05);
+    /* Agrandamos un poco el botón al pasar el cursor */
 }
 
 /* Estilos generales para los campos de entrada */
-input[type="text"], 
-input[type="password"], 
+input[type="text"],
+input[type="password"],
 input[type="email"] {
-    width: 100%; /* Ocupar todo el ancho disponible */
-    padding: 12px 20px; /* Espaciado interno */
-    margin: 8px 0; /* Margen alrededor del campo de entrada */
-    box-sizing: border-box; /* Asegurar que el padding no añade al ancho total */
-    border: 1px solid #ccc; /* Borde del campo de entrada */
-    border-radius: 12px; /* Bordes más redondeados */
+    width: 100%;
+    /* Ocupar todo el ancho disponible */
+    padding: 12px 20px;
+    /* Espaciado interno */
+    margin: 8px 0;
+    /* Margen alrededor del campo de entrada */
+    box-sizing: border-box;
+    /* Asegurar que el padding no añade al ancho total */
+    border: 1px solid #ccc;
+    /* Borde del campo de entrada */
+    border-radius: 12px;
+    /* Bordes más redondeados */
 }
 
 /* Estilos para los botones */
 button {
-    background-color: #f2f2f2; /* Color de fondo */
+    background-color: #f2f2f2;
+    /* Color de fondo */
     border: none;
     padding: 12px 20px;
     cursor: pointer;
-    border-radius: 12px; /* Bordes más redondeados */
+    border-radius: 12px;
+    /* Bordes más redondeados */
 }
 
 /* Cambia el color de fondo cuando el usuario pasa el cursor por encima */
@@ -90,12 +112,15 @@ button:hover {
 
 /* Estilo específico para el botón de registrar */
 .btn-register {
-    background-color: #ffc0cb; /* Color pastel de fondo */
-    color: white; /* Color del texto */
+    background-color: #ffc0cb;
+    /* Color pastel de fondo */
+    color: white;
+    /* Color del texto */
 }
 
 .btn-register:hover {
-    background-color: #ffadb5; /* Color pastel más oscuro al pasar el cursor */
+    background-color: #ffadb5;
+    /* Color pastel más oscuro al pasar el cursor */
 }
 
 /* PARA ANIMAR EL TÍTULO*/
@@ -124,13 +149,63 @@ button:hover {
 header {
     flex: 1;
     text-align: left;
-    padding-right: 50px; /* Espacio entre el título y el formulario */
+    padding-right: 50px;
+    /* Espacio entre el título y el formulario */
 }
 
 .form-wrapper {
     flex: 2;
-    padding-left: 50px; /* Espacio entre el título y el formulario */
+    padding-left: 50px;
+    /* Espacio entre el título y el formulario */
 }
 
+/* Animación de inicio de sesión y cierre*/
 
+.fade-out {
+    animation-name: fadeOut;
+    animation-timing-function: ease-in;
+    animation-duration: 0.5s;
+    /* Ajusta la duración de la animación según prefieras */
+    animation-fill-mode: forwards;
+}
 
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+.fade-in {
+    animation-name: fadeIn;
+    animation-timing-function: ease-in;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+body.fade-in {
+    animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

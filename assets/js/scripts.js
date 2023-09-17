@@ -21,6 +21,17 @@ function hideRegisterForm() {
     document.getElementById('registerForm').style.display = 'none';
 }
 
+function logout() {
+    // Aplica la animación de difuminado a todo el cuerpo del dashboard.
+    document.body.classList.add('fade-out');
+    
+    // Espera que la animación se complete (0.5s es la duración definida anteriormente en CSS) antes de redirigir.
+    setTimeout(function() {
+        window.location.href = 'user/logout.php';
+    }, 500);
+}
+
+
 //PARA ANIMAR EL TÍTULO 
 
 document.addEventListener('DOMContentLoaded', function() {

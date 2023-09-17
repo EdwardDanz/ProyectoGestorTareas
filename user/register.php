@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
         $stmt = $conn->prepare("INSERT INTO usuarios (nombre, apellido, email, password) VALUES (?, ?, ?, ?)");
         $stmt->execute([$nombre, $apellido, $email, $password]);
-        header("Location: login.php");
+        header("Location: ../index.php");
         exit;
     } catch (PDOException $e) {
         $error = 'Error al registrar el usuario: ' . $e->getMessage();
@@ -22,11 +22,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro</title>
 </head>
+
 <body>
     <form action="register.php" method="POST">
         <input type="text" name="nombre" placeholder="Nombre" required>
@@ -42,4 +44,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     ?>
     <p>¿Ya tienes cuenta? <a href="login.php">Iniciar sesión</a></p>
 </body>
+
 </html>

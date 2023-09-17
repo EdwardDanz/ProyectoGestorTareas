@@ -1,7 +1,6 @@
 <?php
-include '../config/database.php';
-
-$error = '';
+session_start(); // Iniciar la sesión al principio del archivo.
+require_once '../config/database.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
@@ -10,45 +9,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt = $conn->prepare("SELECT * FROM usuarios WHERE email = ?");
     $stmt->execute([$email]);
 
-    if ($user = $stmt->fetch()) {
+    $user = $stmt->fetch();
+
+    if ($user) {
         if (password_verify($password, $user['password'])) {
-            session_start();
             $_SESSION['logged_in'] = true;
-            $_SESSION['user_id'] = $user['id'];
-            header("Location: ../index.php");
+            $_SESSION['usuario_id'] = $user['id']; // Cambiado a usuario_id
+            header("Location: ../dashboard.php");
             exit;
         } else {
-            $error = 'Contraseña incorrecta.';
+            // Esto es solo para depuración.
+            error_log("Contraseña incorrecta para el email: $email");
         }
     } else {
-        $error = 'El usuario con este correo electrónico no existe.';
+        // Esto es solo para depuración.
+        error_log("No se encontró usuario con el email: $email");
     }
+
+    // Aquí se redirige de nuevo al index con un mensaje de error.
+    $_SESSION['login_error'] = true;
+    header("Location: ../dashboard.php");
+    exit;
 }
-
-// Suponiendo que $resultado contiene los datos del usuario después de una consulta exitosa.
-$row = $resultado->fetch(PDO::FETCH_ASSOC);
-$_SESSION['usuario_id'] = $row['id'];
-
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar Sesión</title>
-</head>
-<body>
-    <form action="login.php" method="POST">
-        <input type="text" name="usuarionombre" placeholder="Nombre de usuario" required>
-        <input type="password" name="password" placeholder="Contraseña" required>
-        <input type="submit" value="Iniciar sesión">
-    </form>
-    <?php
-    if ($error) {
-        echo "<p>$error</p>";
-    }
-    ?>
-    <p>¿No tienes cuenta? <a href="register.php">Regístrate</a></p>
-</body>
-</html>
